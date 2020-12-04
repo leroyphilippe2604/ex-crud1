@@ -97,7 +97,24 @@
             <td>' . $rows['date'] . '</td>
             <td>' . $rows['startTime'] . '</td> </tr>';
         }
+        $sql -> closeCursor();
         ?>
             </table>
+
+        <!-- exercice 7 -->
+        <h2> Fiche clients </h2>
+        <?php
+        $sql = $pdo -> query("select * from clients");
+        while ($rows = $sql -> fetch()){
+            echo
+            '<p> Nom : ' . $rows['lastName'] . '</p>
+            <p> Prenom : ' . $rows['firstName'] . '</p>
+            <p> Date de naissance : ' . $rows['birthDate'] . '</p>
+            <p> Carte de fidélite : ' . $rows['card'] . '</p>
+            <p> Numéro de carte : ' . $rows['cardNumber'] . '</p> <br>';
+
+        }
+        $sql -> closeCursor();
+        ?>
     </body>
     </html>
