@@ -56,7 +56,7 @@
                 while ($rows = $sql -> fetch()){
                     echo
                     '<tr> <td>' . $rows['lastName'] . '</td>
-                    <td>' . $rows['firstName'] . '<td>
+                    <td>' . $rows['firstName'] . '</td>
                     <td>' . $rows['cardNumber'] . '</td> </tr>';
                 }
 
@@ -65,6 +65,7 @@
         </table>
 
         <!--Exercice 5 -->
+                <h2> order by asc </h2>
             <?php
             $sql = $pdo -> query("select * from clients where lastName LIKE 'M%'   order by lastName asc");
             while ($rows = $sql -> fetch()){
@@ -72,6 +73,31 @@
                 '<p> Nom : ' . $rows['lastName'] . '</p>
                 <p> Prenom : ' . $rows['firstName'] . '</p>';
             }
+
+            $sql -> closeCursor();
             ?>
+
+        <!-- exercice 6 -->
+            <h2> Spectacles </h2>
+            <table>
+                <tr>
+                    <th> Spectacle </th>
+                    <th> Artiste </th>
+                    <th> Date </th>
+                    <th> Heure </th>
+                </tr>
+
+                <?php
+        $sql = $pdo -> query("select title, performer, date, startTime from shows");
+        while ($rows = $sql -> fetch()){
+            echo
+            '<tr> 
+            <td>' . $rows['title'] . '</td>
+            <td>' . $rows['performer'] . '</td>
+            <td>' . $rows['date'] . '</td>
+            <td>' . $rows['startTime'] . '</td> </tr>';
+        }
+        ?>
+            </table>
     </body>
     </html>
