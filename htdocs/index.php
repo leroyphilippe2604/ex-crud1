@@ -39,5 +39,24 @@
                 }
             ?>
         </table>
+
+        <!-- Exercice 4 -->
+        <h2> Client whit fidelity card </h2>
+        <table>
+            <tr>
+                <td> Lastname </td>
+                <td> Firstname </td>
+                <td> Fidelity Card number </td>
+            </tr>
+            <?php
+                $sql = $pdo -> query('select * from clients where cardNumber');
+                while ($rows = $sql -> fetch()){
+                    echo
+                    '<tr> <td>' . $rows['lastName'] . '</td>
+                    <td>' . $rows['firstName'] . '<td>
+                    <td>' . $rows['cardNumber'] . '</td> </tr>';
+                }
+            ?>
+        </table>
     </body>
     </html>
