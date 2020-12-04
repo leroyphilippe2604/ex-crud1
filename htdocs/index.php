@@ -24,6 +24,7 @@
                 '<tr> <td>' . $rows['lastName'] . '</td>
                 <td>' . $rows['firstName'] . '<td>';
             }
+            $sql -> closeCursor();
             ?>
             </table>
             <!-- Exercice 2 -->
@@ -37,6 +38,8 @@
                     echo
                     '<tr> <td>' . $rows['type'] . '</td> </tr>';
                 }
+
+                $sql -> closeCursor();
             ?>
         </table>
 
@@ -56,7 +59,19 @@
                     <td>' . $rows['firstName'] . '<td>
                     <td>' . $rows['cardNumber'] . '</td> </tr>';
                 }
+
+                $sql -> closeCursor();
             ?>
         </table>
+
+        <!--Exercice 5 -->
+            <?php
+            $sql = $pdo -> query("select * from clients where lastName LIKE 'M%'   order by lastName asc");
+            while ($rows = $sql -> fetch()){
+                echo
+                '<p> Nom : ' . $rows['lastName'] . '</p>
+                <p> Prenom : ' . $rows['firstName'] . '</p>';
+            }
+            ?>
     </body>
     </html>
